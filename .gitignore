@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+
+# Windows
+desktop.ini
+
+# Chrome driver
+chromedriver
+chromedriver.exe
+debug.log
+
+# Python
+__pycache__
+
+# Visual Studio Code
+.vscode
+
+# Custom
+**/.env
+test
+
+
