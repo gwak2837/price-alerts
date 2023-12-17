@@ -8,15 +8,17 @@
 
 #### 0. 환경 설정
 
+개발 환경은 `Windows 10 Edu 1909` `Python 3.8.5 64bit`다.
+
 https://sites.google.com/a/chromium.org/chromedriver/downloads
 
 위 링크에서 자신의 운영체제 및 설치된 크롬 버전에 맞는 크롬 드라이버를 다운받아 프로젝트 루트 경로(`price-alerts` 폴더 안)에 저장한다.
 
 ```shell
-> python -m pip install selenium bs4 python-telegram-bot python-dotenv
+> python -m pip install -r requirements.txt
 ```
 
-개발 환경은 `Windows 10 Edu 1909` `Python 3.8.5 64bit`이고 공통적으로 위와 같은 파이썬 패키지가 필요하다. 위 명령어를 통해 설치한다.
+프로젝트 루트 경로에서 위 명령어를 입력하면 `requirements.txt` 안에 있는 모든 파이썬 패키지가 설치된다. 설치되는 패키지는 아래와 같다.
 
 - `selenium` : 파이썬에서 크롬 드라이버를 실행할 수 있다.
 

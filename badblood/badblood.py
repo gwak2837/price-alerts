@@ -17,33 +17,40 @@ COLORS_CSS_SELECTOR = (
     "#contents > div.container2 > div.item2 > div > div > table > tbody:nth-child(3) > tr > td > ul > li"
 )
 SIZES_CSS_SELECTOR = "#product_option_id2 > option"
-SIZE = "S"
 COLOR = "블랙"
+SIZE = "S"
 
 badblood_chrome = Chrome()
 
 while True:
-    badblood_chrome.driver.get(PRODUCT_URL)
+    badblood_chrome.go_to_page(PRODUCT_URL)
 
     price = badblood_chrome.get_bs4_element(PRICE_CSS_SELECTOR)
     print(price.string)
 
     colors = badblood_chrome.driver.find_elements_by_css_selector(COLORS_CSS_SELECTOR)
+    color_find = False
     for color in colors:
-        if color.get_attribute("title") == COLOR and color.get_attribute("class") != "ec-product-selected":
-            color.click()
-            break
+        if color.get_attribute("title") == COLOR:
+            color_find = True
+            if color.get_attribute("class") != "ec-product-selected":
+                color.click()
+                break
+    if not color_find:
+        print("해당 색상의 제품이 없습니다.")
+        continue
 
     sizes = badblood_chrome.get_bs4_elements(SIZES_CSS_SELECTOR)
+    size_find = False
     for size in sizes:
-        print(size.text)
-        """
         if size.string.startswith(SIZE):
+            size_find = True
             if size.string.find("품절") == -1:
-                print("재고가 있습니다.")
+                print(SIZE + " 재고가 있습니다.")
             else:
-                print("재고가 없습니다.")
-                """
+                print(SIZE + " 재고가 없습니다.")
+    if not size_find:
+        print("해당하는 사이즈가 없습니다.")
 
-    time.sleep(3)
+    time.sleep(10)
 
